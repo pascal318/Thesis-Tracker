@@ -823,6 +823,11 @@ export default function AIThesisTracker() {
           <div style={{ fontFamily: "var(--mono)", fontSize: 8, color: "#ccc", letterSpacing: "0.06em" }}>
             {questions.length} questions · {totalSignals} signals
           </div>
+          <div style={{ fontFamily: "var(--mono)", fontSize: 8, color: "#ccc", letterSpacing: "0.06em", marginTop: 8 }}>
+            <a href="https://github.com/pascal318/portfolio-modeller" target="_blank" rel="noopener noreferrer" style={{ color: "#b8860b", textDecoration: "none" }}>
+              Portfolio Modeller ↗
+            </a>
+          </div>
         </footer>
       </div>
     </div>
