@@ -618,11 +618,6 @@ const SECTOR_QUESTIONS = [
 
 const ALL_QUESTIONS = [...CORE_QUESTIONS, ...SECTOR_QUESTIONS];
 
-const INITIAL_TODOS = [
-  { id: 1, text: "Buy ubiquinol", done: false },
-  { id: 2, text: "Message Juan", done: false },
-];
-
 function WeeklyChart({ history }) {
   if (!history || history.length < 2) {
     return (
@@ -786,40 +781,9 @@ function SectionHeader({ title }) {
   );
 }
 
-function TodoSection({ todos, onToggle }) {
-  return (
-    <div style={{
-      background: "#fff", border: "1px solid #e5e5e5", borderRadius: 6,
-      padding: "16px 20px", marginBottom: 24,
-    }}>
-      {todos.map(todo => (
-        <div key={todo.id} style={{
-          display: "flex", alignItems: "center", gap: 10, padding: "8px 0",
-          borderBottom: "1px solid #f0f0f0",
-        }}>
-          <input
-            type="checkbox"
-            checked={todo.done}
-            onChange={() => onToggle(todo.id)}
-            style={{ accentColor: "#b8860b", width: 16, height: 16, cursor: "pointer" }}
-          />
-          <span style={{
-            fontFamily: "var(--serif)", fontSize: 15,
-            textDecoration: todo.done ? "line-through" : "none",
-            color: todo.done ? "#aaa" : "#1a1a1a",
-          }}>
-            {todo.text}
-          </span>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 export default function AIThesisTracker() {
   const [questions] = useState(ALL_QUESTIONS);
   const [expandedId, setExpandedId] = useState(null);
-  const [todos, setTodos] = useState(INITIAL_TODOS);
 
   const coreQuestions = useMemo(() => questions.filter(q => q.type === "core"), [questions]);
   const sectorQuestions = useMemo(() => questions.filter(q => q.type === "sector"), [questions]);
@@ -842,11 +806,6 @@ export default function AIThesisTracker() {
             Open Questions Defining Artea's<br />Current & Future Investible Universe
           </h1>
         </header>
-
-        <SectionHeader title="To-Do" />
-        <TodoSection todos={todos} onToggle={(id) =>
-          setTodos(ts => ts.map(t => t.id === id ? { ...t, done: !t.done } : t))
-        } />
 
         <SectionHeader title="Core Questions" />
         {coreQuestions.map(q => (
