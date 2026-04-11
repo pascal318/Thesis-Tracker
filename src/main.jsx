@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import AIThesisTracker from './ai-thesis-tracker.jsx'
+import TodoApp from './TodoApp.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AIThesisTracker />
+    <TodoApp />
   </React.StrictMode>
 )
